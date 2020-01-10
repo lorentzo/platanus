@@ -1,29 +1,18 @@
 
-#include "tracecontext.h"
-#include "./../shading/shadingcontext.h"
+#include "./../../modeling/scene/scene.h"
+#include "./../../modeling/object/object.h"
 
 class Intersector
 {
-    TraceContext m_trace_context;
+  public: 
 
-    Intersector(TraceContext trace_context) 
-    {
-        trace_context = trace_context;
-    }
+	Intersector(Scene scene);
 
-    ShadingContext trace(const Ray& ray) const {
-		ShadingContext closestIntersection;
-		// intersect all objects, one after the other
-		for (auto iter = m_trace_context.m_scene.objects.begin(); iter != objects.end(); ++iter) {
+    bool trace(
+		const Ray& ray,
+		double &t,
+		Object **object);
 
-			double t = (*iter)->intersect(ray);
-			if (t > eps && t < closestIntersection.t) {
-				closestIntersection.t = t;
-				closestIntersection.object = *iter;
-			}
-		}
-		return closestIntersection;
-	}
+	Scene m_scene;
 
-
-}
+};

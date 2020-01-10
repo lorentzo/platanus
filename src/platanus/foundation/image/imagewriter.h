@@ -7,44 +7,34 @@
 
 //
 // Inspired by:
-// https://raytracing.github.io/books/RayTracingInOneWeekend.html
+// https://www.scratchapixel.com/code.php?id=8&origin=/lessons/3d-basic-rendering/ray-tracing-overview
 //
 
-struct Sample
-{
-    char r,g,b;
-};
+inline
+double clamp(const double &lo, const double &hi, const double &v)
+{ return std::max(lo, std::min(hi, v)); } 
 
 void save_image_ppm(
-    Vector3d **frame_buffer,
+    Vector3d *frame_buffer,
     const int frame_width,
     const int frame_height)
 {
 
     // Open output file.
-    std::ofstream file("out.ppm", std::ios::binary);
+    std::ofstream file;
+    file.open("./../../../../sandbox/output/out.ppm"); 
 
     // Header.
-    std::string frame_width_str = std::to_string(frame_width);
-    std::string frame_height_str = std::to_string(frame_height);
-    file.write("P6 ", 3); // version + whitespace (3B)
-    file.write(frame_width_str.c_str(), 4);
-    file.write(" ", 1);
-    file.write(frame_height_str.c_str(), 4);
-    file.write(" ", 1);
-    file.write("255 ", 5); // max value, (4B)
+    // PPM version, frame width, frame height, max value.
+    file << "P6\n" << frame_width << " " << frame_height << "\n255\n";
 
-    // Values.
-    for (size_t j = 0; j < frame_height; ++j)
+    for (size_t i = 0; i < frame_width * frame_height; ++i) 
     {
-        for(size_t i = 0; i < frame_width; ++i)
-        {
-            Sample s;
-            s.r = frame_buffer[i][j].x;
-            s.g = frame_buffer[i][j].y;
-            s.b = frame_buffer[i][j].z;
-            file.write(reinterpret_cast<char*>(&s), sizeof(Sample));
-        }
-    }
+        char r = (char)(255 * clamp(0, 1, frame_buffer[i].x));
+        char g = (char)(255 * clamp(0, 1, frame_buffer[i].y));
+        char b = (char)(255 * clamp(0, 1, frame_buffer[i].z));
+        file << r << g << b;
+    } 
+
     file.close();
 }

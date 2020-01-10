@@ -1,18 +1,18 @@
 
 #include <vector>
 
-#include "./../object/sphereobject.h"
-#include "./../../../foundation/math/ray.h"
+#include "./../object/object.h"
 
 class Scene {
-public:
 
-	std::vector<Sphere*> objects;
+  public:
 
+	Scene() {}
 
-
-	void add(Sphere* object) {
+	void add(Object* object) {
 		objects.push_back(object);
 	}
+
+	std::vector<Object*> objects;
 	
 };
