@@ -25,6 +25,9 @@ void render_frame(
     // Camera.
     PinholeCamera camera = PinholeCamera(camera_fov_angle, frame);
 
+    // Shading engine.
+    ShadingEngine shading_engine = ShadingEngine(scene);
+
     for (int s = 0; s < samples_per_pixel; s++) {
 
             Vector3d *pix = frame.m_frame_buffer; 
@@ -39,9 +42,7 @@ void render_frame(
                         //camera_ray.d = camera_ray.d.x + RND / 700; // random pixel sample for denoise
                         //camera_ray.d = camera_ray.d.y + RND / 700;
                         
-                        ShadingEngine shading_engine = ShadingEngine();
-
-                        color = shading_engine.shade();
+                        color = shading_engine.shade_simple(camera_ray);
 
                         *(pix++) = *(pix++) + color;
 

@@ -6,12 +6,13 @@ class Intersector
 {
   public: 
 
+	Intersector();
 	Intersector(Scene scene);
 
     bool trace(
 		const Ray& ray,
 		double &t,
-		Object **object);
+		const Object *&hit_object);
 
 	Scene m_scene;
 

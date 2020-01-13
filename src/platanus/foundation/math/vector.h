@@ -31,10 +31,9 @@ struct Vector3d {
         return Vector3d(x - b.x, y - b.y, z - b.z); 
     }
 
-	Vector3d operator*(double b) const 
-    { 
-        return Vector3d(x*b, y*b, z*b); 
-    }
+    Vector3d operator - () const { return Vector3d(-x, -y, -z); }
+
+    Vector3d operator * (const double &r) const { return Vector3d(x * r, y * r, z * r); } 
 
 	Vector3d operator/(double b) const 
     { 

@@ -5,26 +5,28 @@
 
 const float infinity = std::numeric_limits<double>::max(); 
 
+Intersector::Intersector() {}
+
 Intersector::Intersector(Scene scene) : m_scene(scene) {}
 
 bool Intersector::trace(
     const Ray& ray,
-    double &t,
-	Object **hit_object)
+    double &t_near,
+	const Object *&hit_object)
 {
 
-    *hit_object = nullptr;
+    t_near = infinity;
 
     for(size_t i = 0; i < m_scene.objects.size(); ++i)
     {
-        double t_near = infinity;
+        double t_tmp = infinity;
 
-        if(m_scene.objects[i]->intersect(ray, t))
+        if(m_scene.objects[i]->intersect(ray, t_tmp))
         {
-            if(t < t_near)
+            if(t_tmp < t_near)
             {
-                *hit_object = m_scene.objects[i];
-                t_near = t;
+                hit_object = m_scene.objects[i];
+                t_near = t_tmp;
             }
         }
 
