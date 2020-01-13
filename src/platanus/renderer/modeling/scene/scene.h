@@ -7,11 +7,9 @@ class Scene {
 
   public:
 
-	Scene() {}
+	Scene();
 
-	void add(Object* object) {
-		objects.push_back(object);
-	}
+	void add(Object* object);
 
 	std::vector<Object*> objects;
 	

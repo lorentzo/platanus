@@ -1,6 +1,7 @@
 
 #include "./../../../foundation/math/ray.h"
 #include "./../../../foundation/math/vector.h"
+#include "./../material/material.h"
 
 //
 // Object base class.
@@ -11,7 +12,9 @@ class Object
   public:
 
     // Default constructor.
-    Object() : color(1.0, 1.0, 1.0) {}
+    Object();
+
+    Object(Material material) : m_material(material) {}
 
     // Destructor.
     virtual ~Object() {}
@@ -23,6 +26,6 @@ class Object
     // Returns normal in intersection point.
     virtual void get_surface_data(const Vector3d &, Vector3d &) const = 0;
 
-    Vector3d color;
+    Material m_material;
 
 };

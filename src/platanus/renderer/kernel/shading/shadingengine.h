@@ -37,7 +37,7 @@ class ShadingEngine
 
     // Assume point light in viewer (camera) position.
     // Only L*N*color.
-    Vector3d shade_simple(const Ray &ray);
+    Vector3d shade(const Ray &ray);
 
 
 };

@@ -27,7 +27,7 @@ Vector3d ShadingEngine::hemisphere(double u1, double u2)
     return Vector3d(cos(phi)*r, sin(phi)*r, u1);
 }
 
-Vector3d ShadingEngine::shade_simple(const Ray &ray)
+Vector3d ShadingEngine::shade(const Ray &ray)
 {
 
     const Object *hit_object = nullptr;
@@ -39,7 +39,12 @@ Vector3d ShadingEngine::shade_simple(const Ray &ray)
         Vector3d hit_point = ray.o + ray.d * t;
         Vector3d hit_normal;
         hit_object->get_surface_data(hit_point, hit_normal);
-        hit_color = hit_object->color * std::max(0.0, hit_normal.dot(-ray.d));
+        hit_color = hit_object->m_material.m_bsdf.evaluate(
+            hit_normal,
+            -ray.d,
+            Vector3d(1.0, 1.0, 1.0), // light color
+            2.0 // light intensity
+        );
     }
 
     return hit_color;

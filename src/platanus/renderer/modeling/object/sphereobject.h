@@ -2,6 +2,8 @@
 #include "./../../../foundation/math/vector.h"
 #include "./../../../foundation/math/ray.h"
 
+#include "./../material/material.h"
+
 #include "object.h"
 #include <string>
 
@@ -11,11 +13,12 @@ class Sphere : public Object
 
     Sphere(
         Vector3d center,
-        double radius);
+        double radius,
+        Material material);
 
-    bool intersect(const Ray &ray, double &t);
+    bool intersect(const Ray &ray, double &t) const override;
 
-    void get_surface_data(const Vector3d &p_hit, Vector3d &normal);
+    void get_surface_data(const Vector3d &p_hit, Vector3d &normal) const override;
 
   private:
     
