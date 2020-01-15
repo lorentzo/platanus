@@ -1,7 +1,11 @@
 
+#pragma once
+
 #include <vector>
 
-#include "./../object/object.h"
+#include "renderer/modeling/object/object.h"
+
+namespace renderer {
 
 class Scene {
 
@@ -14,3 +18,5 @@ class Scene {
 	std::vector<Object*> objects;
 	
 };
+
+} // namespace renderer

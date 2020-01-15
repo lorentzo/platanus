@@ -1,6 +1,12 @@
 
-#include "./../../modeling/scene/scene.h"
-#include "./../../modeling/object/object.h"
+#pragma once
+
+#include "foundation/math/ray.h"
+
+#include "renderer/modeling/scene/scene.h"
+#include "renderer/modeling/object/object.h"
+
+namespace renderer {
 
 class Intersector
 {
@@ -10,10 +16,12 @@ class Intersector
 	Intersector(Scene scene);
 
     bool trace(
-		const Ray& ray,
+		const foundation::Ray& ray,
 		double &t,
 		const Object *&hit_object);
 
 	Scene m_scene;
 
 };
+
+} // namespace renderer

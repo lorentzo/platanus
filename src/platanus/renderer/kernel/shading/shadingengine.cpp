@@ -1,11 +1,16 @@
 
 #include "shadingengine.h"
 
+using namespace foundation;
+
+namespace renderer {
+
 ShadingEngine::ShadingEngine(Scene scene) : m_scene(scene) 
 {
     m_intersector = Intersector(scene);
 }
 
+/*
 void ShadingEngine::ons(const Vector3d& v1, Vector3d& v2, Vector3d& v3)
 {
     if (std::abs(v1.x) > std::abs(v1.y)) {
@@ -26,6 +31,8 @@ Vector3d ShadingEngine::hemisphere(double u1, double u2)
     const double phi = 2 * PI * u2;
     return Vector3d(cos(phi)*r, sin(phi)*r, u1);
 }
+
+*/
 
 Vector3d ShadingEngine::shade(const Ray &ray)
 {
@@ -49,3 +56,5 @@ Vector3d ShadingEngine::shade(const Ray &ray)
 
     return hit_color;
 }
+
+} // namespace renderer

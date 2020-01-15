@@ -1,7 +1,13 @@
 
 #include "frame.h"
 
-#include "./../../../foundation/image/imagewriter.h"
+#include "foundation/image/imagewriter.h"
+
+using namespace foundation;
+
+namespace renderer {
+
+Frame::Frame() {}
 
 Frame::Frame(
     int frame_width, 
@@ -17,3 +23,5 @@ void Frame::save()
   save_image_ppm(m_frame_buffer, m_frame_width, m_frame_height);
   delete [] m_frame_buffer;
 }
+
+} // namespace renderer

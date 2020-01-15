@@ -1,5 +1,9 @@
 
-#include "./bsdf/bsdf.h"
+#pragma once
+
+#include "renderer/modeling/material/bsdf/bsdf.h"
+
+namespace renderer {
 
 class Material
 {
@@ -10,3 +14,5 @@ class Material
     BSDF m_bsdf;
 
 };
+
+} // namespace renderer

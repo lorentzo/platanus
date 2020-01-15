@@ -1,4 +1,10 @@
 
+#pragma once
+
+#include "foundation/math/vector.h"
+
+namespace renderer {
+
 // marker class for now.
 class BSDF
 {
@@ -6,11 +12,14 @@ class BSDF
   public:
 
     BSDF() {}
+    virtual ~BSDF();
 
-    virtual Vector3d evaluate(
-        const Vector3d &normal, 
-        const Vector3d &light_direction, 
-        const Vector3d &light_color,
+    virtual foundation::Vector3d evaluate(
+        const foundation::Vector3d &normal, 
+        const foundation::Vector3d &light_direction, 
+        const foundation::Vector3d &light_color,
         const double &light_intensity
     ) const;
 };
+
+} // namespace renderer

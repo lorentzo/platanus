@@ -1,8 +1,10 @@
 
-#include "./../../../foundation/math/vector.h"
-#include "./../../../foundation/math/ray.h"
+#pragma once
 
-#include "./../frame/frame.h"
+#include "foundation/math/vector.h"
+#include "foundation/math/ray.h"
+
+#include "renderer/modeling/frame/frame.h"
 
 //
 // Inspired by:
@@ -15,21 +17,26 @@
 // Frame is parallel to placed to (0, 0, -1).
 //
 
+namespace renderer {
+
 class PinholeCamera
 {
   public:
+
+    PinholeCamera();
     
     PinholeCamera(
-        const double fov_angle,
-        const Frame frame);
+        double fov_angle,
+        Frame frame);
 
     void spawn_ray(
         const double &x,
         const double &y,
-        Ray &ray);
+        foundation::Ray &ray);
 
     double m_fov_angle; // scale
-    Frame m_frame;
+    renderer::Frame m_frame;
 
 };
 
+} // namespace renderer

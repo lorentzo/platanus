@@ -11,6 +11,10 @@ set (CMAKE_CXX_STANDARD 11)
 
 # Source files.
 
+set (DIR_PATHS
+	${PROJECT_SOURCE_DIR}/src/platanus
+)
+
 set (SOURCES
 	${PROJECT_SOURCE_DIR}/sandbox/test/test_scenes/scene1/scene1.cpp
 
@@ -38,9 +42,11 @@ set (SOURCES
 	${PROJECT_SOURCE_DIR}/src/platanus/renderer/modeling/object/sphereobject.h
 	${PROJECT_SOURCE_DIR}/src/platanus/renderer/modeling/object/sphereobject.cpp
 	${PROJECT_SOURCE_DIR}/src/platanus/renderer/modeling/scene/scene.h
-	${PROJECT_SOURCE_DIR}/src/platanus/renderer/modeling/scene/scene.h
+	${PROJECT_SOURCE_DIR}/src/platanus/renderer/modeling/scene/scene.cpp
 )
 
 # Product.
+
+include_directories(${DIR_PATHS})
 
 add_executable(platanus ${SOURCES})	

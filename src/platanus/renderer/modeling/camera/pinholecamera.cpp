@@ -1,9 +1,15 @@
 
 #include "pinholecamera.h"
 
+using namespace foundation;
+
+namespace renderer {
+
+PinholeCamera::PinholeCamera() {}
+
 PinholeCamera::PinholeCamera(
-    const double fov_angle,
-    const Frame frame)
+    double fov_angle,
+    Frame frame)
   : m_fov_angle(fov_angle)
   , m_frame(frame)
 {
@@ -39,3 +45,5 @@ void PinholeCamera::spawn_ray(
     ray.d = direction;
 
 }
+
+} // namespace renderer

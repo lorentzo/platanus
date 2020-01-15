@@ -1,4 +1,6 @@
 
+#pragma once
+
 #include <fstream>
 #include <string>
 #include <iostream>
@@ -10,9 +12,12 @@
 // https://www.scratchapixel.com/code.php?id=8&origin=/lessons/3d-basic-rendering/ray-tracing-overview
 //
 
-inline
-double clamp(const double &lo, const double &hi, const double &v)
-{ return std::max(lo, std::min(hi, v)); } 
+namespace foundation {
+
+inline double clamp(const double &lo, const double &hi, const double &v)
+{ 
+    return std::max(lo, std::min(hi, v)); 
+} 
 
 void save_image_ppm(
     Vector3d *frame_buffer,
@@ -38,3 +43,5 @@ void save_image_ppm(
 
     file.close();
 }
+
+} // namespace foundation

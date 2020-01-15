@@ -1,10 +1,16 @@
 
-#include "./../../../foundation/math/vector.h"
+#pragma once
+
+#include "foundation/math/vector.h"
+
+namespace renderer {
 
 class Frame
 {
 
   public:
+
+    Frame();
 
     Frame(int frame_width, int frame_height);
 
@@ -12,7 +18,9 @@ class Frame
 
     int m_frame_width;
     int m_frame_height;
-    Vector3d *m_frame_buffer;
+    foundation::Vector3d *m_frame_buffer;
 
 
 };
+
+} // namespace renderer

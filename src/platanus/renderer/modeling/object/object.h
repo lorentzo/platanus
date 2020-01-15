@@ -1,11 +1,16 @@
 
-#include "./../../../foundation/math/ray.h"
-#include "./../../../foundation/math/vector.h"
-#include "./../material/material.h"
+#pragma once
+
+#include "foundation/math/ray.h"
+#include "foundation/math/vector.h"
+
+#include "renderer/modeling/material/material.h"
 
 //
 // Object base class.
 //
+
+namespace renderer {
 
 class Object
 {
@@ -21,11 +26,13 @@ class Object
 
     // Given ray, perform intersection of object. 
     // Return ray parameter t for intersection.
-    virtual bool intersect(const Ray &, double &) const = 0;
+    virtual bool intersect(const foundation::Ray &, double &) const = 0;
 
     // Returns normal in intersection point.
-    virtual void get_surface_data(const Vector3d &, Vector3d &) const = 0;
+    virtual void get_surface_data(const foundation::Vector3d &, foundation::Vector3d &) const = 0;
 
-    Material m_material;
+    renderer::Material m_material;
 
 };
+
+} // namepsace renderer

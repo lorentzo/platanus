@@ -1,8 +1,14 @@
 
 #include "sphereobject.h"
 
-#include "./../../../foundation/math/intersection/raysphere.h"
+#include "foundation/math/intersection/raysphere.h"
 
+using namespace foundation;
+
+namespace renderer {
+
+Sphere::Sphere() {}
+    
 Sphere::Sphere(
     Vector3d center,
     double radius,
@@ -24,4 +30,4 @@ void Sphere::get_surface_data(const Vector3d &p_hit, Vector3d &normal) const
     normal = (p_hit - m_center).norm();
 }
 
-
+} // namespace renderer

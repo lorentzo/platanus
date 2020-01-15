@@ -1,3 +1,0 @@
-/home/lovro/Documents/CG/rendering/platanus/build/CMakeFiles/rebuild_cache.dir
-/home/lovro/Documents/CG/rendering/platanus/build/CMakeFiles/platanus.dir
-/home/lovro/Documents/CG/rendering/platanus/build/CMakeFiles/edit_cache.dir

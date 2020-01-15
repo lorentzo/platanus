@@ -1,7 +1,11 @@
 
-#include "./../../../../foundation/math/vector.h"
+#pragma once
 
-#include "./bsdf.h"
+#include "foundation/math/vector.h"
+
+#include "bsdf.h"
+
+namespace renderer {
 
 class PhongDiffuse : public BSDF
 {
@@ -9,14 +13,16 @@ class PhongDiffuse : public BSDF
   public:
 
     PhongDiffuse();
-    PhongDiffuse(Vector3d object_albedo);
+    PhongDiffuse(foundation::Vector3d object_albedo);
 
-    Vector3d evaluate(
-        const Vector3d &hit_normal, 
-        const Vector3d &light_direction, 
-        const Vector3d &light_color,
+    foundation::Vector3d evaluate(
+        const foundation::Vector3d &hit_normal, 
+        const foundation::Vector3d &light_direction, 
+        const foundation::Vector3d &light_color,
         const double &light_intensity) const override;
 
-    Vector3d m_object_albedo;
+    foundation::Vector3d m_object_albedo;
 
 };
+
+} // namespace renderer

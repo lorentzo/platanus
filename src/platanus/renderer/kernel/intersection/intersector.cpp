@@ -3,6 +3,10 @@
 
 #include <limits>
 
+using namespace foundation;
+
+namespace renderer {
+
 const float infinity = std::numeric_limits<double>::max(); 
 
 Intersector::Intersector() {}
@@ -35,3 +39,5 @@ bool Intersector::trace(
     return (hit_object != nullptr);
     
 }
+
+} // namespace renderer

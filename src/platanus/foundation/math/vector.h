@@ -1,4 +1,6 @@
 
+#pragma once
+
 #include <math.h>
 #include <stdlib.h>
 
@@ -6,6 +8,8 @@
 // Inspired by:
 // https://users.cg.tuwien.ac.at/zsolnai/gfx/smallpaint/
 //
+
+namespace foundation {
 
 struct Vector3d {
 
@@ -78,3 +82,5 @@ struct Vector3d {
     }
 
 };
+
+} // namespace foundation

@@ -1,4 +1,6 @@
 
+#pragma once
+
 #include "./../ray.h"
 #include "./../vector.h"
 
@@ -6,6 +8,8 @@
 // Inspired by
 // https://www.scratchapixel.com/code.php?id=10&origin=/lessons/3d-basic-rendering/minimal-ray-tracer-rendering-simple-shapes
 //
+
+namespace foundation {
 
 // Ray-sphere intersection test.
 // \param ray: ray for intersection.
@@ -94,4 +98,4 @@ double intersect_sphere(
 }
 */
 
-
+} // namespace foundation
